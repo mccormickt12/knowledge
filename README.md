@@ -6,6 +6,8 @@ Subjects
 --------
 - Linear Algebra
 - Probability
+- Security
+- Unix
 
 Code
 ----
