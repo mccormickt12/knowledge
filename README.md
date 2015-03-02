@@ -6,6 +6,8 @@ Subjects
 --------
 - [Linear Algebra](http://mccormickt12.github.io/knowledge/linalg/sabermetrics.pdf)
 - Probability
+- Security
+- Unix
 
 Code
 ----
