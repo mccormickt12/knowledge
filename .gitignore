@@ -1,0 +1,7 @@
+# Latex Files #
+###############
+*.log
+*.pdf
+*.gz
+*.aux
+*.out
