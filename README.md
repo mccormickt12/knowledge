@@ -8,6 +8,7 @@ Subjects
 - Probability
 - Security
 - Unix
+- [Git](http://mccormickt12.github.io/knowledge/git/githelp.pdf)
 
 Code
 ----
