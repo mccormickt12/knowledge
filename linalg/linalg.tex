@@ -1,0 +1,198 @@
+
+\documentclass[landscape]{article}
+%ss[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{wrapfig}
+\usepackage{hyperref}
+\usepackage[shortlabels]{enumitem}
+\usepackage{enumerate}
+
+
+
+\pdfinfo{
+/Title (linalg.pdf)
+/Creator (TeX)
+/Producer (pdfTeX 1.40.0)
+/Author (Tom McCormick)
+/Keywords (pdflatex, latex,pdftex,tex)}
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+    { \geometry{top=.3in,left=.3in,right=.3in,bottom=.3in} }
+    {\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+        {\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+    }
+
+% Turn off header and footer
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                            {-1ex plus -.5ex minus -.2ex}%
+                            {0.5ex plus .2ex}%x
+                            {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                            {-1explus -.5ex minus -.2ex}%
+                            {0.5ex plus .2ex}%
+                            {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                            {-1ex plus -.5ex minus -.2ex}%
+                            {1ex plus .2ex}%
+                            {\normalfont\small\bfseries}}
+\makeatother
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+
+
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{2}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+    \Large{\underline{Linear Algebra}} \\
+\end{center}
+\subsection*{Definitions and facts}
+\begin{itemize}
+    \item The dot product of two orthogonal vectors is 0
+    \item Rank: The number of linearly independent vectors in a matrix
+    \item Orthogonal: $U^TU = I$ (Independence and orthogonality can be thought of as the same thing)
+    \item Orthonormal:
+    \item Singular Value: Singular values are the square roots of eigenvalues: ($\sigma_i = \sqrt{\lambda_i}$), as can be seen by comparing SVD and the Spectral Theorem
+    \item Eigenvalue:
+    \item Eigenvector:
+    \item Null Space: $Ax = 0$
+    \item Invertible: A matrix is invertible if it is full rank and all eigenvalues are non zero.  Prop of inverse: $AA^{-1} = I$
+    \item Trace: Defined as the of the sum of the main diagonal of a matrix. Is also the sum of the eigenvalues of the matrix
+    \item Determinant: Represents the volume enclosed in the vectors. Is also the product of the eigenvalues of the matrix
+\end{itemize}
+
+\subsection*{Projection}
+For projection of a vector onto a line
+\newline
+Can be thought of as the shadow of a vector onto a line
+$$ \min_{w} || x - x_0 - wu || $$
+
+\subsection*{Norms}
+
+\textbf{l1-norm}
+$$ \sum_{i} x_{i} $$ 
+\begin{itemize}
+\item Least absolute deviation
+\item Robust
+\end{itemize}
+
+\textbf{l2-norm}
+$$ (\sum_{i} x_{i}^{2})^{1/2} $$
+\begin{itemize}
+\item Least Squares
+\item Not very robust (because susceptible to outliers)
+\end{itemize}
+
+\textbf{lp-norm}
+$$ (\sum_{i} x_{i}^{p})^{1/p} $$
+\begin{itemize}
+\item Generalized form of the lp-norm
+\end{itemize}
+
+\subsection*{Fundamental Theorem of Linear Algebra}
+You can decompose any vector into two orthogonal ones, one in the null space and the second in the range of the transpose
+
+
+\subsection*{Least Squares}
+$$ ||Ax - y||_{2}^{2} $$
+
+
+\subsection*{Positive Semi-definte PSD}
+$$ x^TAx \geq 0 : \forall x $$
+All eigenvalues are positive and non-zero
+
+
+\subsection*{QR Decomposition}
+Decompose a matrix into an orthogonal matrix Q and an upper triangular matrix R 
+\newline
+Can be used to solve linear least squares
+$$ A = QR $$
+
+
+
+
+
+\subsection*{Principle Component Analysis (PCA)}
+The goal is to maximize variance
+The eigenvectors that correspond to the largest 
+$$ \lambda_{max} = \max_{u} u^T \Sigma u $$
+
+
+\subsection*{Spectral Theorem/ Singular Eigenvalue Decomposition}
+
+$$ A = \sum_{i}^{n} \lambda_{i}u_{i}u_{i}^{T} = U\Lambda U^T $$
+U is an orthnormal basis of the eigenvectors of A
+$\Lambda$ is a diagonal matrix of the eigenvalues of A
+Only for symmetric, square matrices
+\newline
+There are exactly n (possibly non distinct) real eigenvalues that are associated with an eigenvector from the orthonormal basis U
+
+
+\subsection*{Singular Value Decomposition}
+Generalization of Spectral Theorem to non-symmetric and rectangular matrices
+Express any matrix as the sum of rank 1 matrices
+$$ A = \sum_{i}^{n} \sigma_{i}u_{i}v_{i}^{T} = USV^T $$
+\begin{center}
+    $\text{where } \tilde{S} = 
+    \begin{bmatrix}
+        S & 0 \\
+        0 & 0 \\
+    \end{bmatrix}$
+\end{center}
+
+where all $v_i$'s are orthogonal and all $u_i$'s are orthogonal
+\newline
+U is the orthonormal basis of eigenvectors of A
+\newline
+$\sigma_i$'s are singular values
+\newline
+All the singular values are unique
+\newline
+S is a matrix with $\sigma_i$'s down the diagonal in decreasing order
+
+\subsection*{Cauchy Schwarz}
+$$ x^{T}y = |xy| \leq ||x||_2 ||y||_2 $$
+
+
+
+\rule{0.3\linewidth}{0.25pt}
+
+
+\newpage
+\scriptsize
+\end{multicols}
+\end{document}
